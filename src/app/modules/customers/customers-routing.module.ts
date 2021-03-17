@@ -1,17 +1,18 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
+import { CustomerTableComponent } from './customer-table/customer-table.component';
+
 
 const routes: Routes = [
-  { path: '', redirectTo: 'customers', pathMatch: 'full' },
-  {
-    path: 'customers',
-    loadChildren: './modules/customers/customers.module#CustomersModule'
+  { 
+    path: '', 
+    component:  CustomerTableComponent
   }
 ];
 
 @NgModule({
-  imports: [ RouterModule.forRoot(routes) ],
+  imports: [ RouterModule.forChild(routes) ],
   exports: [ RouterModule ]
 })
 export class AppRoutingModule { }

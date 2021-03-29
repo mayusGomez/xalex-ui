@@ -1,1 +1,9 @@
-<p>user-table works!</p>
+<mat-list>
+    <h3 mat-subheader>Folders</h3>
+    <mat-list-item *ngFor="let note of notes; last as last">
+       <h4 mat-line>{{note.name}}</h4>
+       <p mat-line class="demo-2"> {{note.desc}} </p>
+       <mat-divider [inset]="true" *ngIf="!last"></mat-divider>
+    </mat-list-item>
+    <mat-divider></mat-divider>
+ </mat-list>

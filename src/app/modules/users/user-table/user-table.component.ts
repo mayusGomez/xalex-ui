@@ -7,6 +7,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserTableComponent implements OnInit {
 
+  notes = [
+    {
+      name: 'customers',
+      desc: 'Inicio',
+      icon: 'home'
+    },
+    {
+      name: 'users',
+      desc: 'Cuenta',
+      icon: 'account_balance'
+    }
+  ]
+
+  
   constructor() { }
 
   ngOnInit(): void {

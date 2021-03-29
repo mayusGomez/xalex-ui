@@ -26,7 +26,7 @@
           <mat-nav-list>
             
             <mat-list-item *ngFor="let item of sideMenuItems">
-                <a matLine href="/customers">
+                <a matLine routerLink="/{{item.name}}">
                   <mat-icon>{{ item.icon }}</mat-icon>
                   <span> {{ item.desc }} </span>
                 </a>

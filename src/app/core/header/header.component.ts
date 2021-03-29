@@ -23,10 +23,29 @@ export class HeaderComponent implements OnDestroy {
 
     this.sideMenuItems = [
       {
+        name: 'home',
+        desc: 'Inicio',
+        icon: 'home',
+        path: 'home'
+      },
+      {
+        name: 'users',
+        desc: 'Cuenta',
+        icon: 'account_balance',
+        path: 'users'
+      },
+      {
         name: 'customers',
         desc: 'Clientes',
-        icon: 'face'
-      }
+        icon: 'face',
+        path: 'customers'
+      },
+      {
+        name: 'customers',
+        desc: 'Citas',
+        icon: 'calendar_today',
+        path: 'users'
+      },
     ]
 
   }

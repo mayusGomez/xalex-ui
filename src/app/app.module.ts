@@ -4,9 +4,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+
 import { CoreModule } from './core/core.module';
 import { CustomersModule } from './modules/customers/customers.module'
-
+import { UsersModule } from './modules/users/users.module'
+import { HomeModule } from './modules/home/home.module'
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { CustomersModule } from './modules/customers/customers.module'
     BrowserAnimationsModule,
     AppRoutingModule,
     CoreModule,
-    CustomersModule
+    CustomersModule,
+    UsersModule,
+    HomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

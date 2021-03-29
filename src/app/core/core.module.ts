@@ -6,6 +6,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatListModule} from '@angular/material/list';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -13,6 +14,7 @@ import {MatListModule} from '@angular/material/list';
   declarations: [HeaderComponent],
   imports: [
     CommonModule,
+    RouterModule,
     MatToolbarModule,
     MatIconModule,
     MatButtonModule,

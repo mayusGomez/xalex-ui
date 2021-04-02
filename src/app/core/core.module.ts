@@ -8,6 +8,7 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatListModule} from '@angular/material/list';
 import { RouterModule } from '@angular/router';
 
+import { UsersService } from './services/users.service'
 
 
 @NgModule({
@@ -23,6 +24,9 @@ import { RouterModule } from '@angular/router';
   ],
   exports: [
     HeaderComponent
+  ],
+  providers: [
+    UsersService
   ]
 })
 export class CoreModule { }

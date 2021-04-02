@@ -3,6 +3,8 @@ import { ChartDataSets, ChartOptions, ChartType } from 'chart.js';
 import * as pluginDataLabels from 'chartjs-plugin-datalabels';
 import { Label } from 'ng2-charts';
 
+import { AuthService } from '../../../auth.service';
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -31,9 +33,10 @@ export class HomeComponent implements OnInit {
     { data: [28, 48, 40, 19, 86, 27, 90], label: 'Series B' }
   ];
 
-  constructor() { }
+  constructor(public authServ : AuthService) { }
 
   ngOnInit(): void {
+    this.authServ.handleAuthentication();
   }
 
  // events
@@ -55,6 +58,10 @@ export class HomeComponent implements OnInit {
       56,
       (Math.random() * 100),
       40 ];
+  }
+
+  public logout(): void{
+    this.authServ.logout();
   }
 
 }

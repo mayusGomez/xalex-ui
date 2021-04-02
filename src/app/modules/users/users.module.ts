@@ -4,6 +4,8 @@ import { UserTableComponent } from './user-table/user-table.component';
 import { AppRoutingModule } from './users-routing.module'
 import { MatDividerModule } from '@angular/material/divider';
 import {MatListModule} from '@angular/material/list';
+import { FormsModule } from '@angular/forms';
+
 
 
 @NgModule({
@@ -12,7 +14,8 @@ import {MatListModule} from '@angular/material/list';
     CommonModule,
     AppRoutingModule,
     MatDividerModule,
-    MatListModule
+    MatListModule,
+    FormsModule
   ],
   exports: [
     UserTableComponent

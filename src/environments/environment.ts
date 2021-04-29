@@ -4,6 +4,7 @@
 
 export const environment = {
   production: false,
+  api_url: 'https://1f4ref09x5.execute-api.us-east-1.amazonaws.com/prod',
   gateway: 'https://1f4ref09x5.execute-api.us-east-1.amazonaws.com',
   callback: 'http://localhost:4200/home',
   domain: 'xalex.us.auth0.com',

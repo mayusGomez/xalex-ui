@@ -2,13 +2,15 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { Router } from '@angular/router';
 
+import { UsersService } from './core/services/users.service';
+
 import * as auth0 from 'auth0-js'; 
 
 (window as any).global = window;
 
 @Injectable()
 export class AuthService {
-  constructor(public router: Router)  {
+  constructor( public router: Router, public userServ: UsersService)  {
     this.access_token = null;
     this.id_token = null;
     this.expires_at = null;
@@ -50,6 +52,7 @@ export class AuthService {
     this.id_token = authResult.idToken;
     this.expires_at = expiresAt;
     this.user = authResult.idTokenPayload.sub;
+    this.userServ.currentAccount = authResult.idTokenPayload.sub;
   }
  
   public logout(): void {

@@ -5,11 +5,12 @@ import { AppRoutingModule } from './users-routing.module'
 import { MatDividerModule } from '@angular/material/divider';
 import {MatListModule} from '@angular/material/list';
 import { FormsModule } from '@angular/forms';
+import { UserViewComponent } from './user-view/user-view.component';
 
 
 
 @NgModule({
-  declarations: [UserTableComponent],
+  declarations: [UserTableComponent, UserViewComponent],
   imports: [
     CommonModule,
     AppRoutingModule,

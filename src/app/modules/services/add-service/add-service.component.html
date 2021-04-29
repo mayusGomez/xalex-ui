@@ -1,0 +1,49 @@
+<mat-card>
+    <mat-card-title>Crear Servicio</mat-card-title>
+    <mat-card-content>
+        <div class="wrapper">
+
+            <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    
+                <p>
+                        <input #input class="form-control" type="hidden" formControlName="id">
+                </p>
+    
+                <p> 
+                    <mat-form-field appearance="fill">
+                        <mat-label>Descripcion</mat-label>
+                        <input matInput #input class="form-control" type="text" formControlName="description">
+                    </mat-form-field>
+                </p>
+    
+                <p>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Precio</mat-label>
+                        <input matInput #input class="form-control" type="number" formControlName="price">
+                        <span matPrefix>$&nbsp;</span>
+                    </mat-form-field>
+                </p>
+                
+                <p>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Costo</mat-label>
+                        <input matInput #input class="form-control" type="number" formControlName="cost">
+                        <span matPrefix>$&nbsp;</span>
+                    </mat-form-field>
+                </p>
+                
+    
+                <div mat-dialog-actions>
+                    <button mat-raised-button color="primary" type="submit" [disabled]="!form.valid">Agregar</button>
+                </div>
+            </form>
+            
+            <div mat-dialog-actions> 
+                <button mat-raised-button color="warn" (click)="goBack()">Cancelar</button>
+                <button mat-raised-button color="basic" (click)="cleanForm()">Nuevo</button>
+            </div>
+    
+        </div>
+    </mat-card-content>
+    
+</mat-card>

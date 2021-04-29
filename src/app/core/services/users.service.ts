@@ -4,7 +4,6 @@ import { environment } from '../../../environments/environment';
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 
-
 import { User } from '../models/user'
 
 @Injectable({
@@ -12,7 +11,11 @@ import { User } from '../models/user'
 })
 export class UsersService {
 
-  constructor(private httpClient: HttpClient) { }
+  currentAccount: string;
+
+  constructor(private httpClient: HttpClient) {
+    this.currentAccount = "";
+  }
 
   getUser(user_id : string): Observable<User>  {
     let params = new HttpParams().set('user', user_id);

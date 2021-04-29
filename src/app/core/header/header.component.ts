@@ -2,6 +2,7 @@ import {MediaMatcher} from '@angular/cdk/layout';
 import {ChangeDetectorRef, Component, OnDestroy, Input} from '@angular/core';
 import { MenuItem } from './../models/menu-item'
 
+
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -35,9 +36,15 @@ export class HeaderComponent implements OnDestroy {
         path: 'users'
       },
       {
+        name: 'services',
+        desc: 'Servicios',
+        icon: 'business_center',
+        path: 'services'
+      },
+      {
         name: 'customers',
         desc: 'Clientes',
-        icon: 'face',
+        icon: 'contacts',
         path: 'customers'
       },
       {
@@ -53,5 +60,9 @@ export class HeaderComponent implements OnDestroy {
   ngOnDestroy(): void {
     this.mobileQuery.removeListener(this._mobileQueryListener);
   }
+
+  onItemSelected(item: any) {
+   console.log("item selectd:", item)
+}
 
 }

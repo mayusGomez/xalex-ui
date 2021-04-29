@@ -1,0 +1,20 @@
+
+ <mat-list>
+    <mat-list-item> <b>Nombre:</b> {{ user.name }} </mat-list-item>
+    <mat-list-item> <b>Apellido:</b> {{ user.last_name }} </mat-list-item>
+    <mat-list-item> <b>Teléfono móvil:</b> {{ user.mob_phone }} </mat-list-item>
+    <mat-list-item> <b>Tipo negocio:</b> {{ user.segment }} </mat-list-item>
+    <mat-list-item> <b>Email:</b> {{ user.email }} </mat-list-item>
+    <mat-list-item> <b>Tipo identificación:</b> {{ user.id_type }} </mat-list-item>
+    <mat-list-item> <b>Identificación:</b> {{ user.id_code }} </mat-list-item>
+    <mat-divider></mat-divider>
+    <mat-list-item> País: {{ user.location?.country }} </mat-list-item>
+    <mat-list-item> Ciudad: {{ user.location?.city }} </mat-list-item>
+    <mat-list-item> Dirección: {{ user.location?.address }} </mat-list-item>
+    <mat-divider></mat-divider>
+    <h3 mat-subheader>Profesionales</h3>
+    <mat-list-item *ngFor="let professional of user.proffesionals">
+        <p mat-line class="demo-2"> {{professional}} </p>
+    </mat-list-item>
+
+</mat-list>

@@ -12,8 +12,14 @@ const routes: Routes = [
     component: HomeComponent
   },
   {
+    path: 'services',
+    loadChildren: './modules/services/services.module#ServicesModule',
+    canActivate: [AuthGuardService]
+  },
+  {
     path: 'customers',
-    loadChildren: './modules/customers/customers.module#CustomersModule'
+    loadChildren: './modules/customers/customers.module#CustomersModule',
+    canActivate: [AuthGuardService]
   },
   {
     path: 'users',

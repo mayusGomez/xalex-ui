@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { CustomerTableComponent } from './customer-table/customer-table.component';
 
+import { ServicesResolver } from './customer-table/customer-resolver.service';
 
 const routes: Routes = [
   { 

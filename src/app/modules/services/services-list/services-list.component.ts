@@ -4,24 +4,24 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { MatPaginator } from "@angular/material/paginator";
 
 import {debounceTime, distinctUntilChanged, tap} from 'rxjs/operators';
-import {merge, fromEvent} from "rxjs";
+import {fromEvent} from "rxjs";
 
 import { UsersService } from './../../../core/services/users.service';
 import { Services } from '../../../core/models/services';
 import { ServicesDataSource } from './../../../core/services/services.datasource';
 import { ServicesService } from './../../../core/services/services.service';
-
 import { PageRequest } from '../../../core/models/page';
 
 @Component({
-  selector: 'app-customer-table',
-  templateUrl: './customer-table.component.html',
-  styleUrls: ['./customer-table.component.sass']
+  selector: 'app-services-list',
+  templateUrl: './services-list.component.html',
+  styleUrls: ['./services-list.component.sass']
 })
-export class CustomerTableComponent implements OnInit, AfterViewInit {
+export class ServicesListComponent implements OnInit {
 
-  displayedColumns: string[] = ['description', 'price', 'cost'];
+  displayedColumns: string[] = ['action','description', 'price', 'cost'];
   dataSource: ServicesDataSource;
+  pageSize:number= 10;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild('input', { static: true }) input: ElementRef;
@@ -39,7 +39,7 @@ export class CustomerTableComponent implements OnInit, AfterViewInit {
     let genFilter : PageRequest<any> = {
       userId: this.userServ.currentAccount,
       pageNumber: 0,
-      pageSize: 2
+      pageSize: this.pageSize
     }
     this.dataSource.loadServices(genFilter);
 
@@ -78,22 +78,14 @@ export class CustomerTableComponent implements OnInit, AfterViewInit {
       this.dataSource.loadServices(genFilter);
   }
 
-  getRecord(row: any){
-    console.log("Row:", row);
-  }
-
-  openAddDialog() {
+  addService() {
     console.log("open");
+    this.router.navigate(['/services/add', ]);
   }
 
-  startEdit(service:Services) {
+  editService(service:Services) {
     console.log("startEdit:", service);
+    this.router.navigate(['/services/edit/' + service.id, ]);
   }
-
-  deleteItem(service:Services) {
-    console.log("deleteItem:", service);
-  }
-
-
 
 }

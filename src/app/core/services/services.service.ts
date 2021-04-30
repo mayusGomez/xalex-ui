@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { ApiService } from './api.service';
 import { Services } from './../models/services';
 import { PageRequest } from './../models/page';
-import { Page } from './../models/page'
+import { Page } from './../models/page';
 
 @Injectable({
   providedIn: 'root'

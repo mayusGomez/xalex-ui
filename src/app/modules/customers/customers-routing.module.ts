@@ -1,14 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { CustomerTableComponent } from './customer-table/customer-table.component';
-
-import { ServicesResolver } from './customer-table/customer-resolver.service';
+import { CustomersListComponent } from './customers-list/customers-list.component';
+import { CustomerResolver } from './customers.resolver.service';
 
 const routes: Routes = [
   { 
     path: '', 
-    component:  CustomerTableComponent
+    component:  CustomersListComponent
   }
 ];
 

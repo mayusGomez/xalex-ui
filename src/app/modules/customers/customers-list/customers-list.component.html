@@ -1,0 +1,65 @@
+
+<mat-card>
+    <mat-card-title>
+        Clientes
+    </mat-card-title>
+
+    <mat-form-field>
+        <input matInput placeholder="Buscar por documento" #input>
+    </mat-form-field>
+
+    <div class="spinner-container" *ngIf="dataSource.loading$ | async">
+        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+    </div>
+
+    <mat-card-content class="container">
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+            <ng-container matColumnDef="action">
+              <tr><th mat-header-cell *matHeaderCellDef> 
+                <button mat-icon-button color="primary" (click)="addCustomer()">
+                  <mat-icon>add</mat-icon>
+                </button>
+              </th></tr>
+              <tr>
+                <td mat-cell *matCellDef="let row" style="width:20%">
+                  <button mat-icon-button color="primary" (click)="editCustomer(row)" title="Edit Customer"><mat-icon>edit</mat-icon></button>
+                </td>
+              <tr>
+            </ng-container>
+
+            <!-- Name Column -->
+            <ng-container matColumnDef="name">
+              <th mat-header-cell *matHeaderCellDef> Name </th>
+              <td mat-cell *matCellDef="let customer"> {{customer.name}} </td>
+            </ng-container>
+          
+            <!-- LastName Column -->
+            <ng-container matColumnDef="last_name">
+              <th mat-header-cell *matHeaderCellDef> Apellido </th>
+              <td mat-cell *matCellDef="let customer"> {{customer.last_name}} </td>
+            </ng-container>
+          
+            <!-- Mobile Column -->
+            <ng-container matColumnDef="main_mobile_phone">
+              <th mat-header-cell *matHeaderCellDef> Email </th>
+              <td mat-cell *matCellDef="let customer"> {{customer.main_mobile_phone}} </td>
+            </ng-container>
+
+            <!-- Document Column -->
+            <ng-container matColumnDef="id_number">
+              <th mat-header-cell *matHeaderCellDef> Doc Identificacion </th>
+              <td mat-cell *matCellDef="let customer"> {{customer.id_number}} </td>
+            </ng-container>
+
+          
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+
+          <mat-paginator *ngIf="dataSource.page.asObservable() | async as page" [length]="page.paging.total" [pageSize]="pageSize"
+          [hidePageSize]="true" >
+          </mat-paginator>
+
+    </mat-card-content>
+</mat-card>

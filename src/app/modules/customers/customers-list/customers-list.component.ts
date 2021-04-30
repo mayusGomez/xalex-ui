@@ -4,24 +4,25 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { MatPaginator } from "@angular/material/paginator";
 
 import {debounceTime, distinctUntilChanged, tap} from 'rxjs/operators';
-import {merge, fromEvent} from "rxjs";
+import {fromEvent} from "rxjs";
 
 import { UsersService } from './../../../core/services/users.service';
-import { Services } from '../../../core/models/services';
-import { ServicesDataSource } from './../../../core/services/services.datasource';
-import { ServicesService } from './../../../core/services/services.service';
-
+import { Customer } from '../../../core/models/customer';
+import { CustomersDataSource } from './../../../core/services/customers.datasource';
+import { CustomersService } from './../../../core/services/customers.service';
 import { PageRequest } from '../../../core/models/page';
 
-@Component({
-  selector: 'app-customer-table',
-  templateUrl: './customer-table.component.html',
-  styleUrls: ['./customer-table.component.sass']
-})
-export class CustomerTableComponent implements OnInit, AfterViewInit {
 
-  displayedColumns: string[] = ['description', 'price', 'cost'];
-  dataSource: ServicesDataSource;
+@Component({
+  selector: 'app-customers-list',
+  templateUrl: './customers-list.component.html',
+  styleUrls: ['./customers-list.component.sass']
+})
+export class CustomersListComponent implements OnInit {
+
+  displayedColumns: string[] = ['name','last_name', 'main_mobile_phone', 'id_number'];
+  dataSource: CustomersDataSource;
+  pageSize:number= 10;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild('input', { static: true }) input: ElementRef;
@@ -30,18 +31,18 @@ export class CustomerTableComponent implements OnInit, AfterViewInit {
     public route: ActivatedRoute, 
     public router: Router,
     public userServ: UsersService,
-    public servService: ServicesService
+    public customerService: CustomersService
   ) { }
 
   ngOnInit(): void {
 
-    this.dataSource = new ServicesDataSource(this.servService);
+    this.dataSource = new CustomersDataSource(this.customerService);
     let genFilter : PageRequest<any> = {
       userId: this.userServ.currentAccount,
       pageNumber: 0,
-      pageSize: 2
+      pageSize: this.pageSize
     }
-    this.dataSource.loadServices(genFilter);
+    this.dataSource.loadCustomers(genFilter);
 
   }
 
@@ -53,47 +54,39 @@ export class CustomerTableComponent implements OnInit, AfterViewInit {
             distinctUntilChanged(),
             tap(() => {
                 this.paginator.pageIndex = 0;
-                this.loadServicesPage();
+                this.loadCustomersPage();
             })
         )
         .subscribe();
 
     this.paginator.page
     .pipe(
-        tap(() => this.loadServicesPage())
+        tap(() => this.loadCustomersPage())
     )
     .subscribe();
 
   }
 
-  loadServicesPage() {
+  loadCustomersPage() {
       let genFilter : PageRequest<any> = {
         userId: this.userServ.currentAccount,
-        filterField: this.input.nativeElement.value? "description": undefined,
+        filterField: this.input.nativeElement.value? "id_number": undefined,
         filterData: this.input.nativeElement.value,
         pageNumber: this.paginator.pageIndex,
         pageSize: this.paginator.pageSize
       }
 
-      this.dataSource.loadServices(genFilter);
+      this.dataSource.loadCustomers(genFilter);
   }
 
-  getRecord(row: any){
-    console.log("Row:", row);
-  }
-
-  openAddDialog() {
+  addCustomer() {
     console.log("open");
+    // this.router.navigate(['/customers/add', ]);
   }
 
-  startEdit(service:Services) {
-    console.log("startEdit:", service);
+  editCustomer(customer:Customer) {
+    console.log("startEdit:", customer);
+    // this.router.navigate(['/services/edit/' + service.id, ]);
   }
-
-  deleteItem(service:Services) {
-    console.log("deleteItem:", service);
-  }
-
-
 
 }

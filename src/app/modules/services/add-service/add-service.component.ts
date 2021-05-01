@@ -43,7 +43,6 @@ export class AddServiceComponent implements OnInit {
         cost:this.form.value.cost,
       }
 
-      console.log("Service to save:", service);
       this.servServices.post(service).subscribe(
         service => {
           this._snackBar.open("Servicio guardado", "Ocultar");

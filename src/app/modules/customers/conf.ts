@@ -1,0 +1,1 @@
+export const default_year = 1900;

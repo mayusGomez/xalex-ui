@@ -10,7 +10,7 @@ import { CustomersService } from '../../core/services/customers.service';
 @Injectable()
 export class CustomerResolver implements Resolve<Customer> {
   constructor(
-    private customersService: CustomersService,
+    private customerService: CustomersService,
     private router: Router,
     private userService: UsersService
   ) { }
@@ -20,7 +20,7 @@ export class CustomerResolver implements Resolve<Customer> {
     state: RouterStateSnapshot
   ): Observable<any> {
 
-    return this.customersService.get( this.userService.currentAccount, route.params['id'])
+    return this.customerService.get( this.userService.currentAccount, route.params['id'])
       .pipe(catchError((err) => this.router.navigateByUrl('/')));
        
   }

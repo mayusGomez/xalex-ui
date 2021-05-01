@@ -20,7 +20,7 @@ import { PageRequest } from '../../../core/models/page';
 })
 export class CustomersListComponent implements OnInit {
 
-  displayedColumns: string[] = ['name','last_name', 'main_mobile_phone', 'id_number'];
+  displayedColumns: string[] = ['action', 'name','last_name', 'main_mobile_phone', 'id_number'];
   dataSource: CustomersDataSource;
   pageSize:number= 10;
 
@@ -81,12 +81,12 @@ export class CustomersListComponent implements OnInit {
 
   addCustomer() {
     console.log("open");
-    // this.router.navigate(['/customers/add', ]);
+    this.router.navigate(['/customers/add', ]);
   }
 
   editCustomer(customer:Customer) {
     console.log("startEdit:", customer);
-    // this.router.navigate(['/services/edit/' + service.id, ]);
+    this.router.navigate(['/customers/edit/' + customer.id, ]);
   }
 
 }

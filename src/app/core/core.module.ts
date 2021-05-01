@@ -8,11 +8,11 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatListModule} from '@angular/material/list';
 import { RouterModule } from '@angular/router';
 
-import { UsersService } from './services/users.service'
-
+import { UsersService } from './services/users.service';
+import { CalendarDayMonthComponent } from './components/calendar-day-month/calendar-day-month.component'
 
 @NgModule({
-  declarations: [HeaderComponent],
+  declarations: [HeaderComponent, CalendarDayMonthComponent],
   imports: [
     CommonModule,
     RouterModule,
@@ -23,7 +23,8 @@ import { UsersService } from './services/users.service'
     MatListModule
   ],
   exports: [
-    HeaderComponent
+    HeaderComponent, 
+    CalendarDayMonthComponent
   ],
   providers: [
     UsersService

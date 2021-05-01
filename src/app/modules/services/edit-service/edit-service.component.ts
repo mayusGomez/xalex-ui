@@ -1,11 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import {MatSnackBar} from '@angular/material/snack-bar';
-import { FormGroup, FormControl, Validators, FormBuilder } 
+import { FormGroup, Validators, FormBuilder } 
     from '@angular/forms';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
-
 
 import { UsersService } from './../../../core/services/users.service';
 import { Services } from './../../../core/models/services';
@@ -32,14 +29,6 @@ export class EditServiceComponent implements OnInit {
   ngOnInit(): void {
 
     this.service = this.route.snapshot.data.service;
-    
-    /*data.subscribe(
-      (data: { service: Services }) => {
-        this.service = data.service;
-      }
-    );*/
-
-    console.log("Service from resolver:", this.service);
 
     this.form = this.fb.group({
       "id": ["", ],

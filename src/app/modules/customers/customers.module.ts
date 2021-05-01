@@ -12,12 +12,17 @@ import {MatPaginatorModule} from '@angular/material/paginator'
 import { MatInputModule } from "@angular/material/input";
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 import {MatButtonModule} from '@angular/material/button';
+import { MatSelectModule} from '@angular/material/select';
+import { MatDatepickerModule} from '@angular/material/datepicker';
 
 import { CustomersListComponent } from './customers-list/customers-list.component';
-import {CustomerResolver} from './customers.resolver.service';
+import { AddCustomerComponent } from './add-customer/add-customer.component';
+import { EditCustomerComponent } from './edit-customer/edit-customer.component';
+
+import { CustomerResolver } from './customer.resolver.service';
 
 @NgModule({
-  declarations: [CustomersListComponent],
+  declarations: [CustomersListComponent, AddCustomerComponent, EditCustomerComponent],
   imports: [
     CommonModule,
     AppRoutingModule,
@@ -30,6 +35,8 @@ import {CustomerResolver} from './customers.resolver.service';
     MatProgressBarModule,
     MatIconModule,
     MatSnackBarModule,
+    MatSelectModule,
+    MatDatepickerModule,
     ReactiveFormsModule
   ],
   providers: [

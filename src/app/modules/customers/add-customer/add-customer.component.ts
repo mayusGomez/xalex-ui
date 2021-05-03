@@ -71,7 +71,7 @@ export class AddCustomerComponent implements OnInit{
       last_name:["", Validators.required],
       main_mobile_phone:["", Validators.required],
       // aux_mobile_phone: this.fb.array([ this.createAuxMobPhone() ]),
-      email: ["", [Validators.required, Validators.email, ]],
+      email: ["", [Validators.email, ]],
       id_type: ["", Validators.required],
       id_number: ["", Validators.required],
       location: this.fb.group({

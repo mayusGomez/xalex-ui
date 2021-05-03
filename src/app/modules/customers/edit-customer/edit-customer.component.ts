@@ -66,7 +66,7 @@ export class EditCustomerComponent implements OnInit {
       name: ["", Validators.required],
       last_name:["", Validators.required],
       main_mobile_phone:["", Validators.required],
-      email: ["", [Validators.required, Validators.email, ]],
+      email: ["", [Validators.email, ]],
       id_type: ["", Validators.required],
       id_number: ["", Validators.required],
       location: this.fb.group({

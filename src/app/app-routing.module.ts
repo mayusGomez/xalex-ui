@@ -13,17 +13,17 @@ const routes: Routes = [
   },
   {
     path: 'services',
-    loadChildren: './modules/services/services.module#ServicesModule',
+    loadChildren: () => import('./modules/services/services.module').then(m => m.ServicesModule),
     canActivate: [AuthGuardService]
   },
   {
     path: 'customers',
-    loadChildren: './modules/customers/customers.module#CustomersModule',
+    loadChildren: () => import('./modules/customers/customers.module').then(m => m.CustomersModule),
     canActivate: [AuthGuardService]
   },
   {
     path: 'users',
-    loadChildren: './modules/users/users.module#UsersModule',
+    loadChildren: () => import('./modules/users/users.module').then(m => m.UsersModule),
     canActivate: [AuthGuardService]
   }
 ];

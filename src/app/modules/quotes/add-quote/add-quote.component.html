@@ -1,0 +1,54 @@
+
+
+<!-- Page content -->
+<div class="basic-container">
+  {{  user$ | async | json}}
+  <mat-card>
+    <!-- Page form start -->
+    <form
+      [formGroup]="quoteForm"
+      novalidate
+      (ngSubmit)="save(quoteForm.value, quoteForm.valid, $event)"
+    >
+      <mat-card-title>Formulario de Cotización</mat-card-title>
+      <mat-card-content>
+        <div
+          fxLayout="row"
+          fxLayout.xs="column"
+          fxLayoutWrap
+          fxLayoutGap="3.5%"
+          fxLayoutAlign="left"
+        >
+          <!-- Comapny name input field -->
+          <mat-form-field class="example-full-width" fxFlex="75%" *ngIf="professionals">
+           
+            <input
+              type="text"
+              matInput
+              placeholder="Profesional"
+              formControlName="professional"
+              [matAutocomplete]="auto"
+            />
+            
+            <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+              <mat-option *ngFor="let prof of professionals" [value]="prof">
+                {{prof.name}}
+              </mat-option>
+            </mat-autocomplete>
+
+          </mat-form-field>
+          
+        </div>
+      </mat-card-content>
+
+      <!-- Form submit button enabled on if form is valid -->
+      <mat-card-actions
+        ><button mat-button [disabled]="quoteForm.invalid">
+          Submit
+        </button>
+      </mat-card-actions>
+      
+    </form>
+    <!-- Page form end -->
+  </mat-card>
+</div>

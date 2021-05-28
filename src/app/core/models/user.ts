@@ -4,6 +4,11 @@ export interface Location {
     address: string
 }
 
+export interface Professional {
+    code?: number;
+    name?: string;
+}
+
 export interface User {
     id: string
     name : string
@@ -14,5 +19,5 @@ export interface User {
     id_type?: string
     id_code?: string
     location?:Location
-    proffesionals?: string[]
+    professionals?: Professional[]
 }

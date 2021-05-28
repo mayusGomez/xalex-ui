@@ -48,6 +48,12 @@ export class HeaderComponent implements OnDestroy {
         path: 'customers'
       },
       {
+        name: 'quotes',
+        desc: 'Cotizaciones',
+        icon: 'addchart',
+        path: 'quotes'
+      },
+      {
         name: 'customers',
         desc: 'Citas',
         icon: 'calendar_today',

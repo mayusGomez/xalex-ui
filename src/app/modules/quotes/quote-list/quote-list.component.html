@@ -1,0 +1,68 @@
+
+<mat-card>
+    <mat-card-title>
+        Cotizaciones
+    </mat-card-title>
+
+    <mat-form-field>
+        <input matInput placeholder="Buscar cotizacion por cóodigo" #input>
+    </mat-form-field>
+
+    <div class="spinner-container" *ngIf="dataSource.loading$ | async">
+        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+    </div>
+
+    <mat-card-content class="container">
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+            <ng-container matColumnDef="action">
+              <tr><th mat-header-cell *matHeaderCellDef> 
+                <button mat-icon-button color="primary" (click)="addQuote()">
+                  <mat-icon>add</mat-icon>
+                </button>
+              </th></tr>
+              <tr>
+                <td mat-cell *matCellDef="let row" style="width:20%">
+                  <button mat-icon-button color="primary" (click)="editQuote(row)" title="Edit Quote"><mat-icon>edit</mat-icon></button>
+                </td>
+              <tr>
+            </ng-container>
+
+            <ng-container matColumnDef="code">
+              <th mat-header-cell *matHeaderCellDef> Código </th>
+              <td mat-cell *matCellDef="let quote"> {{quote.code}} </td>
+            </ng-container>
+          
+            <ng-container matColumnDef="register_date">
+              <th mat-header-cell *matHeaderCellDef> Fecha Registro </th>
+              <td mat-cell *matCellDef="let quote"> {{quote.register_date}} </td>
+            </ng-container>
+          
+            <!-- 
+            <ng-container matColumnDef="name">
+              <th mat-header-cell *matHeaderCellDef> Nombre </th>
+              <td mat-cell *matCellDef="let quote"> {{quote.customer?.name}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="last_name">
+                <th mat-header-cell *matHeaderCellDef> Apellidos </th>
+                <td mat-cell *matCellDef="let quote"> {{quote.customer?.last_name}} </td>
+            </ng-container>
+            -->
+
+            <ng-container matColumnDef="description">
+                <th mat-header-cell *matHeaderCellDef> Descripcion </th>
+                <td mat-cell *matCellDef="let quote"> {{quote.description}} </td>
+            </ng-container>
+
+          
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+
+          <mat-paginator *ngIf="dataSource.page.asObservable() | async as page" [length]="page.paging.total" [pageSize]="pageSize"
+          [hidePageSize]="true" >
+          </mat-paginator>
+
+    </mat-card-content>
+</mat-card>

@@ -13,6 +13,7 @@ import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 import {MatButtonModule} from '@angular/material/button';
 import {MatSelectModule} from '@angular/material/select';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { MatDividerModule } from '@angular/material/divider';
 
 import {QuoteServiceResolver} from './quote.resolver.service';
 import {AppRoutingModule} from './quotes-routing.module';
@@ -37,6 +38,7 @@ import { AddQuoteComponent } from './add-quote/add-quote.component';
     MatSnackBarModule,
     MatSelectModule,
     MatAutocompleteModule,
+    MatDividerModule,
     ReactiveFormsModule
   ],
   providers: [

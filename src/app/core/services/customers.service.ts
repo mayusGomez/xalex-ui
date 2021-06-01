@@ -22,6 +22,20 @@ export class CustomersService {
     );
   }
 
+  queryByID(userId: string, id: string): Observable<Customer[]> {
+    return this.apiService
+    .get(
+      '/v1/customers',
+      {
+        userId: userId,
+        filterField: 'id_number',
+        filterData: id,
+        pageNumber: 0,
+        pageSize: 10
+      }
+    );
+  }
+
   get(userId: string, customerId: string): Observable<Customer>{
     return this.apiService.get('/v1/customers/' + customerId, {userId: userId})
   }

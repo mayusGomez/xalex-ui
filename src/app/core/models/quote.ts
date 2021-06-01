@@ -23,11 +23,11 @@ export interface DetailService  {
 export interface EventCustomer  {
 	id:string;
 	name:string;
-	last_name:string;
-	main_mobile_phone:string;
-	email:string;
-	id_type:string
-	id_number:string;
+	last_name?:string;
+	main_mobile_phone?:string;
+	email?:string;
+	id_type?:string
+	id_number?:string;
 }
 
 
@@ -39,7 +39,7 @@ export interface Quote {
     customer?: EventCustomer;
     professional?:Professional;
     status?:QuoteStatus;
-    description: string;
-    notes:Notes[];
-    services:DetailService[];
+    description?: string;
+    notes?:Notes[];
+    services?:DetailService[];
 }

@@ -2,7 +2,6 @@
 
 <!-- Page content -->
 <div class="basic-container">
-  {{  user$ | async | json}}
   <mat-card>
     <!-- Page form start -->
     <form
@@ -19,9 +18,31 @@
           fxLayoutGap="3.5%"
           fxLayoutAlign="left"
         >
-          <!-- Comapny name input field -->
-          <mat-form-field class="example-full-width" fxFlex="75%" *ngIf="professionals">
-           
+          
+          
+          <mat-form-field appearance="fill" class="form-field" >
+            <input
+              type="text"
+              matInput
+              placeholder="Clientes"
+              formControlName="customer"
+              [matAutocomplete]="autoCust"
+              #input
+            />
+            
+            <mat-autocomplete #autoCust="matAutocomplete" [displayWith]="displayFnCust">
+              <div *ngIf="customers$ | async as customerData"> 
+                <mat-option  *ngFor="let cust of customerData" [value]="cust">
+                  {{cust.id_number}}
+                </mat-option>
+              </div>
+            </mat-autocomplete>
+
+          </mat-form-field>
+
+          
+
+          <mat-form-field appearance="fill" class="form-field" *ngIf="professionals">
             <input
               type="text"
               matInput
@@ -37,6 +58,80 @@
             </mat-autocomplete>
 
           </mat-form-field>
+
+          <mat-form-field appearance="fill" class="form-field">
+            <mat-label>Descripcion</mat-label>
+            <input matInput class="form-control" type="text" formControlName="description">
+          </mat-form-field>
+
+          <mat-card formArrayName="services">
+            <mat-card-title>Servicios</mat-card-title>
+            <mat-divider></mat-divider>
+  
+            <!-- loop throught units -->
+            <div
+              *ngFor="let service of quoteForm.get('services')['controls']; let i=index"
+            >
+              <!-- row divider show for every nex row exclude if first row -->
+              <mat-divider
+                *ngIf="quoteForm.get('services')['length'] > 1 && i > 0"
+              ></mat-divider>
+              <br />
+  
+              <!-- group name in this case row index -->
+              <div [formGroupName]="i">
+                <div
+                  fxLayout="row"
+                  fxLayout.xs="column"
+                  fxLayoutWrap
+                  fxLayoutGap="3.5%"
+                  fxLayoutAlign="center"
+                >
+                  <!-- unit name input field -->
+                  <mat-form-field fxFlex="30%">
+                    <input
+                      matInput
+                      placeholder="Servicio"
+                      formControlName="description"
+                      required
+                    />
+                    <!-- input field error -->
+                    <mat-error *ngIf="service.controls.description.invalid">
+                      Nombre del servicio es requerido
+                    </mat-error>
+                  </mat-form-field>
+  
+                
+  
+                  <!-- unit price input field -->
+                  <mat-form-field fxFlex="20%" fxFlex.xs="grow">
+                    <input
+                      matInput
+                      placeholder="Precio"
+                      type="number"
+                      formControlName="price"
+                      required
+                    />
+                  </mat-form-field>
+  
+                </div>
+              </div>
+            </div>
+  
+            <!-- New unit button -->
+            <mat-divider></mat-divider>
+            <mat-card-actions>
+              <button type="button" mat-raised-button (click)="addUnit()">
+                <mat-icon>add box</mat-icon>
+                Adicionar servicio
+              </button>
+              <button type="button" mat-raised-button (click)="clearAllUnits()">
+                <mat-icon>remove_circle</mat-icon>
+                Limpiar todo
+              </button>
+              
+            </mat-card-actions>
+          </mat-card>
           
         </div>
       </mat-card-content>

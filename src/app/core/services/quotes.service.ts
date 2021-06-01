@@ -26,6 +26,7 @@ export class QuotesService {
   }
 
   post(quote: Quote) :  Observable<Quote>{
+    console.log("post quote")
     return this.apiService.post('/billing/v1/quotes', quote)
   }
 
